@@ -1,0 +1,47 @@
+type Mutation{
+    guardarLibro(libroRequest:libroRequest):Libro,
+    actualizarLibro(id:Int, libroRequest:libroRequest):Libro,
+    eliminarLibro(id : Int) : Int,
+}
+
+type Query{
+    listarLibro : [Libro],
+    listarLibroPorId(id:Int): Libro
+}
+
+type Libro{
+    idLibro: Int,
+    titulo: String,
+    descripcion: String,
+    paginas: Int,
+    edicion: String,
+    autor: Autor,
+    editorial: Editorial
+}
+
+type Editorial{
+    idEditorial: Int,
+    nombre: String,
+    pais: String,
+    libros: [Libro]
+}
+
+type Autor{
+    idAutor: Int,
+    nombre: String,
+    apellidos: String,
+    pais: String,
+    libros: [Libro]
+}
+
+
+
+input libroRequest{
+    titulo: String,
+    descripcion: String,
+    paginas: Int,
+    edicion: String,
+    autorId: Int,
+    editorialId: Int
+}
+
